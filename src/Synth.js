@@ -1,5 +1,5 @@
 // Create the synth
-const Synth = new Tone.Synth({
+const synth = new Tone.Synth({
     oscillator: {
         type: "sine"
     },
@@ -11,4 +11,4 @@ const Synth = new Tone.Synth({
     }
 }).toMaster();
 
-export { Synth }
+export default synth
