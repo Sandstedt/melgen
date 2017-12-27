@@ -33,9 +33,28 @@ class CreateMelody {
         // create a string with the events
         let text = ' ';
         this.events.forEach((element, idx, array) => {
-            text = text + '"' + element + '"';
-            if (idx < array.length - 1) {
-                text = text + ', '
+            // check if current element is an sub-array
+            if ( typeof element === 'object') {
+                text = text + '<span class="sub-arr">[';
+
+                element.forEach((el, idx, array) => {
+                    text = text + '"' + el + '"';
+                    if (idx < array.length - 1) {
+                        text = text + ', ';
+                    }
+                });
+                text = text + ']</span>';
+
+                if (idx < array.length - 1) {
+                    text = text + ', ';
+                }
+
+            }
+            else {
+                text = text + '"' + element + '"';
+                if (idx < array.length - 1) {
+                    text = text + ', ';
+                }
             }
         });
 

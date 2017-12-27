@@ -22,6 +22,10 @@
         font-size: 0.5em;
         max-width: 14em;
         line-height: 1.5;
+        color: $c-accent;
+        .sub-arr {
+            color: $c;
+        }
     }
     
     // States
