@@ -6,7 +6,7 @@ const common = require('./webpack.common.js');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const baseName = '';
+const baseName = '.';
 
 module.exports = merge(common, {
     entry: [
@@ -40,13 +40,13 @@ module.exports = merge(common, {
         // Extract imported CSS into own file - see above
         new ExtractTextPlugin('[name].[hash:20].css'),
         // Minify JS
-        new UglifyJSPlugin({
-            sourceMap: true,
-            compress: true,
-            output: {
-                comments: false
-            }
-        }),
+        // new UglifyJSPlugin({
+        //     sourceMap: true,
+        //     compress: true,
+        //     output: {
+        //         comments: false
+        //     }
+        // }),
         // Minify CSS
         new webpack.LoaderOptionsPlugin({
             minimize: true,

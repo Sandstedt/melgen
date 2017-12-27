@@ -1,0 +1,22 @@
+* { box-sizing: border-box }
+body * + * {
+    margin-top: 1em;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: $c-bg;
+    color: $c;
+    font-size: calc(0.8em + 0.5vw);
+}
+
+#app {
+    min-height: 100%;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

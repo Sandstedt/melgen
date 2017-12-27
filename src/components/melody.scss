@@ -1,0 +1,44 @@
+.melody {
+    margin-top: 1em;
+    padding: 0 0.5em;
+    &__button {
+        background: $c;
+        color: $c-bg;
+        border: none;
+        border-radius: 0;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        min-width: 7em;
+        transition: background 0.4s, box-shadow 0.2s;
+        font-weight: 200;
+        text-transform: lowercase;
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba($c-accent, 1);
+        }
+    }
+
+    &__array {
+        font-size: 0.5em;
+        max-width: 14em;
+        line-height: 1.5;
+    }
+    
+    // States
+    &--playing {
+        .melody__button {
+            background: $c-accent;
+            box-shadow: 0 0 10px 0 rgba($c-accent, 0.8);
+            &:focus {
+                box-shadow: 0 0 10px 2px rgba($c-accent, 0.8),
+                            0 0 0 2px rgba($c-accent, 1);
+            }
+        }
+    }
+}
+
+.melodies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
