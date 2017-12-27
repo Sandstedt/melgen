@@ -63,8 +63,7 @@ class GenerateMelodies {
 
                 
             }
-
-            new CreateMelody(melody, index).init();
+            new CreateMelody(melody, index, 'melodies').init();
         }
     }
 }

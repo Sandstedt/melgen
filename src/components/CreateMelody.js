@@ -1,9 +1,10 @@
 import Sequence from './Sequence'
 
 class CreateMelody {
-    constructor(events, id) {
+    constructor(events, id, wrap) {
         this.events = events;
         this.id = id;
+        this.wrap = wrap;
         this.state = { playing: false }
     }
 
@@ -18,21 +19,20 @@ class CreateMelody {
         const sequence = new Sequence(this.events);
         
         Tone.Transport.start();
-        this.button.classList.add('melody--playing')
+        this.melodyWrap.classList.add('melody--playing')
         this.state.playing = true;
     }
 
     stopMelody() {
         Tone.Transport.stop();
         
-        this.button.classList.remove('melody--playing')
+        this.melodyWrap.classList.remove('melody--playing')
         this.state.playing = false;
     }
 
     _createButton() {
         // create a string with the events
-        let text = ' ';
-        console.log('events: ', this.events);
+        let text = '<em>[</em>';
         this.events.forEach((element, idx, array) => {
             // check if current element is an sub-array
             if ( typeof element === 'object') {
@@ -58,17 +58,25 @@ class CreateMelody {
                 }
             }
         });
+        text = text + '<em>]</em>';
 
         // Create the melody button
-        const wrap = document.getElementById('melodies');
-        this.button = document.createElement('div');
-        this.button.classList = 'melody';
-        this.button.innerHTML = `
-        <button class="melody__button">Melody: <strong>${this.id}</strong></button>
-        <p class="melody__array">${text}</p>
-        `;
+        const wrap = document.getElementById(this.wrap);
+        this.melodyWrap = document.createElement('div');
+        this.melodyWrap.classList = 'melody';
+
+        this.button = document.createElement('button');
+        this.button.classList = 'melody__button';
+        this.button.innerHTML = `Melody: <strong>${this.id}</strong>`;
+
+        this.buttonparagraph = document.createElement('p');
+        this.buttonparagraph.classList = 'melody__array';
+        this.buttonparagraph.innerHTML = text;
+
+        this.melodyWrap.appendChild(this.button);
+        this.melodyWrap.appendChild(this.buttonparagraph);
     
-        wrap.appendChild(this.button);
+        wrap.appendChild(this.melodyWrap);
     }
 
     _interactions() {
