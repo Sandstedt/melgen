@@ -1,3 +1,6 @@
+:root {
+    --tempo: 125;
+}
 .melody {
     margin-top: 1em;
     padding: 0 0.5em;
@@ -27,7 +30,7 @@
             color: $c;
         }
     }
-    
+
     // States
     &--playing {
         .melody__button {
@@ -38,9 +41,21 @@
                             0 0 0 2px rgba($c-accent, 1);
             }
         }
+        span {
+            opacity: 0.5;
+             animation: highlight calc(60s / var(--tempo));
+            // animation: highlight calc(60 / var(--tempo) );
+        }
+        @for $i from 1 through 8 {
+            span:nth-child(#{$i}) {
+                animation-delay : calc(60s / var(--tempo) * #{$i - 1});
+            }
+        }
     }
 }
-
+@keyframes highlight {
+    0%, 100% { opacity: 1 }
+}
 .melodies {
     display: flex;
     flex-wrap: wrap;

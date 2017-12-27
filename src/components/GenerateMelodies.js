@@ -41,7 +41,6 @@ class GenerateMelodies {
                     let subArr = [];
                     for (let sub = 0; sub < this.subTonesDivision; sub++) {
                         let noteToPush = random(0, this.scale.length - 1);
-                        console.log(noteToPush + ': ', this.scale[noteToPush]);
                         if ( Math.random() < this.pauseRatio) {
                             // create a pause
                             subArr.push("");
@@ -49,7 +48,6 @@ class GenerateMelodies {
                             subArr.push(this.scale[noteToPush]);
                         }
                     }
-                    console.log('subArr', subArr);
                     melody.push(subArr);
 
                 } else {

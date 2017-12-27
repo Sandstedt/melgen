@@ -32,6 +32,7 @@ class CreateMelody {
     _createButton() {
         // create a string with the events
         let text = ' ';
+        console.log('events: ', this.events);
         this.events.forEach((element, idx, array) => {
             // check if current element is an sub-array
             if ( typeof element === 'object') {
@@ -51,7 +52,7 @@ class CreateMelody {
 
             }
             else {
-                text = text + '"' + element + '"';
+                text = text + '<span>"' + element + '"</span>';
                 if (idx < array.length - 1) {
                     text = text + ', ';
                 }
