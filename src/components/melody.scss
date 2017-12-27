@@ -40,10 +40,28 @@
                 box-shadow: 0 0 10px 2px rgba($c-accent, 0.8),
                             0 0 0 2px rgba($c-accent, 1);
             }
+            position: relative;
+            &:before, &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 5px;
+                height: 10%;
+                background: $c-accent;
+                border-radius: 50%;
+            }
+            &:before {
+                left: -10px;
+                animation: pulsate calc(60s * 8 / var(--tempo)) infinite linear;
+            }
+            &:after {
+                right: -10px;
+                animation: pulsate calc(60s * 2 / var(--tempo)) infinite linear;
+            }
         }
         span {
             opacity: 0.5;
-             animation: highlight calc(60s / var(--tempo));
+             animation: highlights calc(60s / var(--tempo));
             // animation: highlight calc(60 / var(--tempo) );
         }
         @for $i from 1 through 8 {
@@ -53,8 +71,16 @@
         }
     }
 }
-@keyframes highlight {
+@keyframes highlights {
     0%, 100% { opacity: 1 }
+}
+@keyframes pulsate {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(920%);
+    }
 }
 .melodies {
     display: flex;
